@@ -16,7 +16,7 @@ public class MyWorld extends World
         }
 
         for (int i = 0; i < 5; i++) {
-            ExplodingRobot er = new ExplodingRobot(80, 1.2, 150, 15);
+            ExplodingRobot er = new ExplodingRobot(80, 1.2, 150, 9999);
             addObject(er, Greenfoot.getRandomNumber(getWidth() / 2), Greenfoot.getRandomNumber(getHeight()));
         }
 

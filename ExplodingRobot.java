@@ -54,10 +54,7 @@ public class ExplodingRobot extends Robot {
     }
 
     private void explode() {
-        List<Human> humans = getObjectsInRange(explosionRadius, Human.class);
-        for (Human h : humans) {
-            h.takeDamage(explosionDamage);
-        }
+        attack();
         getWorld().removeObject(this);
     }
 }
