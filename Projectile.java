@@ -3,9 +3,14 @@ import java.util.ArrayList;
 
 public class Projectile extends SuperSmoothMover
 {
+    //speed for the projectile 
     private double speed = 0;
+
+    //working on range(dissapears at certain range)
     private int timer = 0;
     private int transparency = 255;
+    
+    //image for the projectile
     GreenfootImage laser = new GreenfootImage("images/laser.png");
     public Projectile(double speed)
     {
