@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Robot
+comment1.params=health\ speed\ range\ damage
+comment1.target=Robot(int,\ double,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ attack()
+comment4.params=
+comment4.target=int\ getNumRobots()
+comment5.params=world
+comment5.target=void\ removedFromWorld(greenfoot.World)
+numComments=6
