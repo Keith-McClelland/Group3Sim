@@ -1,9 +1,8 @@
 import greenfoot.*;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ExplodingRobot extends Robot {
     private int explosionRadius = 100;
-    private int explosionDamage = 999;
     private int detectionRange = 300;
 
     public ExplodingRobot(int health, double speed, int range, int damage) {
@@ -31,26 +30,6 @@ public class ExplodingRobot extends Robot {
         }
 
         move(getSpeed());
-    }
-
-    private Human getClosestHuman() {
-        List<Human> humans = getWorld().getObjects(Human.class);
-        Human closest = null;
-        double minDist = Double.MAX_VALUE;
-        for (Human h : humans) {
-            double d = getDistanceTo(h);
-            if (d < minDist) {
-                minDist = d;
-                closest = h;
-            }
-        }
-        return closest;
-    }
-
-    private double getDistanceTo(Actor a) {
-        double dx = getPreciseX() - ((SuperSmoothMover)a).getPreciseX();
-        double dy = getPreciseY() - ((SuperSmoothMover)a).getPreciseY();
-        return Math.hypot(dx, dy);
     }
 
     private void explode() {

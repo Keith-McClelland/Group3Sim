@@ -25,7 +25,21 @@ public abstract class Robot extends Units {
             getWorld().removeObject(this);
         }
     }
-
+    
+    protected Human getClosestHuman() {
+        ArrayList<Human> humans = new ArrayList<>(getWorld().getObjects(Human.class));
+        Human closest = null;
+        double minDist = Double.MAX_VALUE;
+        for (Human h : humans) {
+            double d = getDistanceTo(h);
+            if (d < minDist) {
+                minDist = d;
+                closest = h;
+            }
+        }
+        return closest;
+    }
+    
     public void attack() {
         ArrayList<Human> targets = new ArrayList<>(getObjectsInRange(range, Human.class));
         for (Human h : targets) {

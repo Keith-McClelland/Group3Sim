@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Units extends SuperSmoothMover
 {
@@ -61,10 +61,43 @@ public abstract class Units extends SuperSmoothMover
         }
         updateHealthBar(); 
     }
+    
+    protected Human getClosestHuman() {
+        ArrayList<Human> humans = new ArrayList<>(getWorld().getObjects(Human.class));
+        Human closest = null;
+        double minDist = Double.MAX_VALUE;
+        for (Human h : humans) {
+            double d = getDistanceTo(h);
+            if (d < minDist) {
+                minDist = d;
+                closest = h;
+            }
+        }
+        return closest;
+    }
+    protected Robot getClosestRobot() {
+        ArrayList<Robot> robots = new ArrayList<>(getWorld().getObjects(Robot.class));
+        Robot closest = null;
+        double minDist = Double.MAX_VALUE;
+        for (Robot r : robots) {
+            double d = getDistanceTo(r);
+            if (d < minDist) {
+                minDist = d;
+                closest = r;
+            }
+        }
+        return closest;
+    }
 
     protected void addedToWorld(World world) {
         healthBar = new SuperStatBar(maxHealth, health, this, 40, 6, 30, Color.GREEN, Color.RED, true, Color.BLACK, 1);
         world.addObject(healthBar, getX(), getY() + 30);
+    }
+    
+    protected double getDistanceTo(Actor a) {
+        double dx = getPreciseX() - ((SuperSmoothMover)a).getPreciseX();
+        double dy = getPreciseY() - ((SuperSmoothMover)a).getPreciseY();
+        return Math.hypot(dx, dy);
     }
 
     /** Keeps the health bar in sync with the unit’s current health */

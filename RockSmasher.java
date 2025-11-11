@@ -1,5 +1,5 @@
 import greenfoot.*;
-import java.util.List;
+import java.util.ArrayList;
 
 public class RockSmasher extends Human {
     private int cooldown = 0;
@@ -13,7 +13,7 @@ public class RockSmasher extends Human {
     public void act() {
         super.act();
         if (cooldown > 0) cooldown--;
-        List<Robot> targets = getObjectsInRange(range, Robot.class);
+        ArrayList<Robot> targets = new ArrayList<>(getObjectsInRange(range, Robot.class));
         if (!targets.isEmpty() && cooldown == 0) {
             for (Robot r : targets) r.takeDamage(damage);
             cooldown = DELAY;

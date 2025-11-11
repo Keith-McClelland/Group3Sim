@@ -33,12 +33,6 @@ public class RockThrower extends Human {
         return closest;
     }
 
-    private double getDistanceTo(Actor a) {
-        double dx = getPreciseX() - a.getX();
-        double dy = getPreciseY() - a.getY();
-        return Math.hypot(dx, dy);
-    }
-
     private void moveForward() {
         move(getSpeed()); 
     }
